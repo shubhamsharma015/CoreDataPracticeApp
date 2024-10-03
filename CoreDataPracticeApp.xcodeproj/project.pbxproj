@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8487D1DF2CAEBB34005C4E15 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8487D1DE2CAEBB34005C4E15 /* UIColorExt.swift */; };
 		849CBAD52C9EE6C3002992B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CBAD42C9EE6C3002992B0 /* AppDelegate.swift */; };
 		849CBAD72C9EE6C3002992B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CBAD62C9EE6C3002992B0 /* SceneDelegate.swift */; };
 		849CBAD92C9EE6C3002992B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849CBAD82C9EE6C3002992B0 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8487D1DE2CAEBB34005C4E15 /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		849CBAD12C9EE6C3002992B0 /* CoreDataPracticeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataPracticeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		849CBAD42C9EE6C3002992B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849CBAD62C9EE6C3002992B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8487D1DD2CAEBB17005C4E15 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8487D1DE2CAEBB34005C4E15 /* UIColorExt.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		849CBAC82C9EE6C3002992B0 = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +69,7 @@
 				849CBAD42C9EE6C3002992B0 /* AppDelegate.swift */,
 				849CBAD62C9EE6C3002992B0 /* SceneDelegate.swift */,
 				849CBAD82C9EE6C3002992B0 /* ViewController.swift */,
+				8487D1DD2CAEBB17005C4E15 /* Extension */,
 				849CBADA2C9EE6C3002992B0 /* Main.storyboard */,
 				849CBADD2C9EE6C5002992B0 /* Assets.xcassets */,
 				849CBADF2C9EE6C5002992B0 /* LaunchScreen.storyboard */,
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				849CBAD92C9EE6C3002992B0 /* ViewController.swift in Sources */,
+				8487D1DF2CAEBB34005C4E15 /* UIColorExt.swift in Sources */,
 				849CBAD52C9EE6C3002992B0 /* AppDelegate.swift in Sources */,
 				849CBAD72C9EE6C3002992B0 /* SceneDelegate.swift in Sources */,
 			);
