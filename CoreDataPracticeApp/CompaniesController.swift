@@ -7,11 +7,20 @@
 
 import UIKit
 //14
-class ViewController: UITableViewController {
+class CompaniesController: UITableViewController {
+    
+    var companies = [
+        Company(name: "google", founded: Date()),
+        Company(name: "Facebook", founded: Date()),
+    Company(name: "Apple", founded: Date())
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        
         view.backgroundColor = .white
 
         navigationItem.title = "Companies"
@@ -28,12 +37,20 @@ class ViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
         
-        setupNavigationStyle()
+//        setupNavigationStyle()
 
     }
 
     @objc func handleAddCompany() {
         
+        let createCompanyController = CreateCompanyController()
+
+        let navController = CustomeNavigationController(rootViewController: createCompanyController)
+        navController.modalPresentationStyle = .fullScreen
+        createCompanyController.delegate = self
+      
+        present(navController, animated: true)
+
     }
     
 
@@ -48,31 +65,29 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return companies.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
 
+        let company = companies[indexPath.row]
         cell.backgroundColor = .tealColor
-        cell.textLabel?.text = "name"
+        cell.textLabel?.text = company.name
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         return cell
     }
     
     
-    func setupNavigationStyle() {
-    
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.backgroundColor = .lightRed
-        navigationController?.navigationBar.barTintColor = .lightRed
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
 
-    }
     
 }
 
+extension CompaniesController: CreateCompanyControllerDelegate {
+    func didAddCompany(company: Company) {
+        companies.append(company)
+        let newIndexPath = IndexPath(row: companies.count-1 , section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
+}
