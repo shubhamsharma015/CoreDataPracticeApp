@@ -18,10 +18,46 @@ class CreateCompanyController: UIViewController {
     var company: Company?{
         didSet {
             nameTextField.text = company?.name
+            if let imageData = company?.imageData {
+                companyImageView.image = UIImage(data: imageData)
+            }
+        
+            guard let founded = company?.founded else { return }
+            datePicker.date = founded
+            setupCircularImageStyle()
         }
     }
     
+    private func setupCircularImageStyle() {
+        companyImageView.layer.cornerRadius = companyImageView.frame.width / 2
+        companyImageView.clipsToBounds = true
+        companyImageView.layer.borderColor = UIColor.darkBlue.cgColor
+        companyImageView.layer.borderWidth = 2
+    }
+    
     var delegate: CreateCompanyControllerDelegate?
+    
+    
+    lazy var companyImageView: UIImageView = {
+        let initialImage = UIImage(named: "select_photo_empty")
+        let imageView = UIImageView(image: initialImage )
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        
+        // for making tappable make property to lazy var
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self , action: #selector(handleSelectPhoto)))
+        return imageView
+    }()
+    
+    @objc private func handleSelectPhoto() {
+        print("trying to select photo")
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        present(imagePickerController, animated: true)
+    }
     
     let nameLabel: UILabel = {
         let label = UILabel()
@@ -35,6 +71,14 @@ class CreateCompanyController: UIViewController {
         textField.placeholder = "Enter Name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
+    }()
+    
+    let datePicker: UIDatePicker = {
+        let dp = UIDatePicker()
+        dp.datePickerMode = .date
+        dp.preferredDatePickerStyle = .wheels
+        dp.translatesAutoresizingMaskIntoConstraints = false
+        return dp
     }()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,6 +112,11 @@ class CreateCompanyController: UIViewController {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         
         company.name = nameTextField.text
+        company.founded = datePicker.date
+        if let companyImage = companyImageView.image {
+            let imageData = companyImage.jpegData(compressionQuality: 0.8)
+            company.imageData = imageData
+        }
         
         do {
             try context.save()
@@ -88,6 +137,12 @@ class CreateCompanyController: UIViewController {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
         company.setValue(nameTextField.text, forKey: "name")
+        company.setValue(datePicker.date, forKey: "founded")
+        
+        if let companyImage = companyImageView.image {
+            let imageData = companyImage.jpegData(compressionQuality: 0.8)
+            company.setValue(imageData, forKey: "imageData")
+        }
         
         do {
             try context.save()
@@ -112,10 +167,16 @@ class CreateCompanyController: UIViewController {
         lightBlueBackgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         lightBlueBackgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         lightBlueBackgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        lightBlueBackgroundView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        lightBlueBackgroundView.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        
+        view.addSubview(companyImageView)
+        companyImageView.topAnchor.constraint(equalTo: view.topAnchor,constant: 8).isActive = true
+        companyImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        companyImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        companyImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         view.addSubview(nameLabel)
-        nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: companyImageView.bottomAnchor).isActive = true
         nameLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 16).isActive = true
 //        nameLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
@@ -127,6 +188,11 @@ class CreateCompanyController: UIViewController {
         nameTextField.bottomAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
         nameTextField.topAnchor.constraint(equalTo: nameLabel.topAnchor).isActive = true
         
+        view.addSubview(datePicker)
+        datePicker.topAnchor.constraint(equalTo: nameLabel.bottomAnchor).isActive = true
+        datePicker.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        datePicker.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        datePicker.bottomAnchor.constraint(equalTo: lightBlueBackgroundView.bottomAnchor).isActive = true
     }
     
     func setupCancelButton() {
@@ -137,4 +203,24 @@ class CreateCompanyController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+}
+
+//MARK: ImagePicker delegates
+extension CreateCompanyController : UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let editedImage = info[.editedImage] as? UIImage {
+            companyImageView.image = editedImage
+        }else if let originalImage = info[.originalImage] as? UIImage {
+            companyImageView.image = originalImage
+        }
+        setupCircularImageStyle()
+        dismiss(animated: true)
+    }
+    
 }
