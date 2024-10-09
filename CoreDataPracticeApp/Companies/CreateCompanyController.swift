@@ -92,8 +92,8 @@ class CreateCompanyController: UIViewController {
         view.backgroundColor = UIColor.darkBlue
 
         setupUI()
-        setupCancelButton()
         
+        setupCancelButton()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     }
 
@@ -158,16 +158,7 @@ class CreateCompanyController: UIViewController {
     }
     
     private func setupUI() {
-        let lightBlueBackgroundView = UIView()
-        
-        lightBlueBackgroundView.backgroundColor = UIColor.lightBlue
-        lightBlueBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(lightBlueBackgroundView)
-        
-        lightBlueBackgroundView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        lightBlueBackgroundView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        lightBlueBackgroundView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        lightBlueBackgroundView.heightAnchor.constraint(equalToConstant: 350).isActive = true
+        let lightBlueBackgroundView = setupLightBlueBackgroundView(height: 350)
         
         view.addSubview(companyImageView)
         companyImageView.topAnchor.constraint(equalTo: view.topAnchor,constant: 8).isActive = true
@@ -195,13 +186,6 @@ class CreateCompanyController: UIViewController {
         datePicker.bottomAnchor.constraint(equalTo: lightBlueBackgroundView.bottomAnchor).isActive = true
     }
     
-    func setupCancelButton() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancelModal))
-    }
-    
-    @objc func handleCancelModal() {
-        dismiss(animated: true, completion: nil)
-    }
 
 }
 

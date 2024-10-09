@@ -20,6 +20,8 @@
 		849D50CA2CB5600A002FBBAB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D50C92CB5600A002FBBAB /* CoreDataManager.swift */; };
 		84A2A57C2CB5BBBA0058B2CF /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A57B2CB5BBBA0058B2CF /* CompanyCell.swift */; };
 		84A2A57F2CB5C27F0058B2CF /* CompaniesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A57E2CB5C27F0058B2CF /* CompaniesController+UITableView.swift */; };
+		84A2A5812CB5C9360058B2CF /* EmployeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5802CB5C9360058B2CF /* EmployeesController.swift */; };
+		84A2A5832CB5CBFA0058B2CF /* CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5822CB5CBFA0058B2CF /* CreateEmployeeController.swift */; };
 		84A950602CB411D300767887 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9505F2CB411D300767887 /* UIViewControllerExt.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +41,8 @@
 		849D50C92CB5600A002FBBAB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		84A2A57B2CB5BBBA0058B2CF /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		84A2A57E2CB5C27F0058B2CF /* CompaniesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+UITableView.swift"; sourceTree = "<group>"; };
+		84A2A5802CB5C9360058B2CF /* EmployeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesController.swift; sourceTree = "<group>"; };
+		84A2A5822CB5CBFA0058B2CF /* CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmployeeController.swift; sourceTree = "<group>"; };
 		84A9505F2CB411D300767887 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +85,7 @@
 		849CBAD32C9EE6C3002992B0 /* CoreDataPracticeApp */ = {
 			isa = PBXGroup;
 			children = (
+				84BA3B282CB6CDB1000791A2 /* Employees */,
 				84A2A57D2CB5BCC90058B2CF /* Companies */,
 				849CBAD42C9EE6C3002992B0 /* AppDelegate.swift */,
 				849CBAD62C9EE6C3002992B0 /* SceneDelegate.swift */,
@@ -90,7 +95,6 @@
 				849CBADD2C9EE6C5002992B0 /* Assets.xcassets */,
 				849CBADF2C9EE6C5002992B0 /* LaunchScreen.storyboard */,
 				849CBAE22C9EE6C5002992B0 /* Info.plist */,
-				8487D1E22CAEC80E005C4E15 /* CreateCompanyController.swift */,
 				849D50C62CB55481002FBBAB /* PracticeAppDataModel.xcdatamodeld */,
 				849D50C92CB5600A002FBBAB /* CoreDataManager.swift */,
 			);
@@ -102,9 +106,19 @@
 			children = (
 				849CBAD82C9EE6C3002992B0 /* CompaniesController.swift */,
 				84A2A57E2CB5C27F0058B2CF /* CompaniesController+UITableView.swift */,
+				8487D1E22CAEC80E005C4E15 /* CreateCompanyController.swift */,
 				84A2A57B2CB5BBBA0058B2CF /* CompanyCell.swift */,
 			);
 			path = Companies;
+			sourceTree = "<group>";
+		};
+		84BA3B282CB6CDB1000791A2 /* Employees */ = {
+			isa = PBXGroup;
+			children = (
+				84A2A5802CB5C9360058B2CF /* EmployeesController.swift */,
+				84A2A5822CB5CBFA0058B2CF /* CreateEmployeeController.swift */,
+			);
+			path = Employees;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +199,8 @@
 				8487D1E12CAEC586005C4E15 /* Company.swift in Sources */,
 				84A2A57C2CB5BBBA0058B2CF /* CompanyCell.swift in Sources */,
 				849CBAD72C9EE6C3002992B0 /* SceneDelegate.swift in Sources */,
+				84A2A5832CB5CBFA0058B2CF /* CreateEmployeeController.swift in Sources */,
+				84A2A5812CB5C9360058B2CF /* EmployeesController.swift in Sources */,
 				849D50CA2CB5600A002FBBAB /* CoreDataManager.swift in Sources */,
 				84A950602CB411D300767887 /* UIViewControllerExt.swift in Sources */,
 				84A2A57F2CB5C27F0058B2CF /* CompaniesController+UITableView.swift in Sources */,

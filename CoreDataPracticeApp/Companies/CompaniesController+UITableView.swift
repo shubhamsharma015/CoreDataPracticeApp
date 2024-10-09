@@ -9,6 +9,13 @@ import UIKit
 
 extension CompaniesController {
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let company = companies[indexPath.row]
+        let employeesController = EmployeesController()
+        employeesController.company = company
+        navigationController?.pushViewController(employeesController, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self](_, _, completionHandler) in
