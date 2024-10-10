@@ -21,17 +21,19 @@ class EmployeesController: UITableViewController {
     
     private func fetchEmployees() {
         print("Trying to fetch employees...")
+        guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
         
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        
-        let request = NSFetchRequest<Employee>(entityName: "Employee")
-        do {
-           let employee = try context.fetch(request)
-            self.employees = employee
-            employee.forEach{print("employee name: ", $0.name ?? "")}
-        }catch let err {
-            print("failed to fetch employees: ",err)
-        }
+        self.employees = companyEmployees
+//        let context = CoreDataManager.shared.persistentContainer.viewContext
+//        
+//        let request = NSFetchRequest<Employee>(entityName: "Employee")
+//        do {
+//           let employee = try context.fetch(request)
+//            self.employees = employee
+//            employee.forEach{print("employee name: ", $0.name ?? "")}
+//        }catch let err {
+//            print("failed to fetch employees: ",err)
+//        }
     }
     
     override func viewDidLoad() {
@@ -51,6 +53,7 @@ class EmployeesController: UITableViewController {
         
         let createEmployeeController = CreateEmployeeController()
         createEmployeeController.delegate = self
+        createEmployeeController.company = company
         let navController = CustomeNavigationController(rootViewController: createEmployeeController)
         navController.modalPresentationStyle = .fullScreen
         
@@ -68,6 +71,18 @@ class EmployeesController: UITableViewController {
         let employee = employees[indexPath.row]
         
         cell.textLabel?.text = employee.name
+        
+        if let birthday = employee.employeeInformation?.birthday {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM dd, yyyy"
+            
+            cell.textLabel?.text = "\(employee.name ?? "") : \(dateFormatter.string(from: birthday))"
+        }
+        
+//        if let taxId = employee.employeeInformation?.taxId {
+//            cell.textLabel?.text = "\(employee.name ?? "") taxId: \(taxId)"
+//        }
+        
         cell.backgroundColor = UIColor.tealColor
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
