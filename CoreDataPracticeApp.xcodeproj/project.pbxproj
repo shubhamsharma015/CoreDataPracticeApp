@@ -23,6 +23,7 @@
 		84A2A5812CB5C9360058B2CF /* EmployeesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5802CB5C9360058B2CF /* EmployeesController.swift */; };
 		84A2A5832CB5CBFA0058B2CF /* CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A2A5822CB5CBFA0058B2CF /* CreateEmployeeController.swift */; };
 		84A950602CB411D300767887 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A9505F2CB411D300767887 /* UIViewControllerExt.swift */; };
+		84BB36932CBAF1C40044213A /* EmployeeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB36922CBAF1C40044213A /* EmployeeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		84A2A5802CB5C9360058B2CF /* EmployeesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesController.swift; sourceTree = "<group>"; };
 		84A2A5822CB5CBFA0058B2CF /* CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmployeeController.swift; sourceTree = "<group>"; };
 		84A9505F2CB411D300767887 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
+		84BB36922CBAF1C40044213A /* EmployeeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				84A2A5802CB5C9360058B2CF /* EmployeesController.swift */,
+				84BB36922CBAF1C40044213A /* EmployeeType.swift */,
 				84A2A5822CB5CBFA0058B2CF /* CreateEmployeeController.swift */,
 			);
 			path = Employees;
@@ -199,6 +202,7 @@
 				8487D1E12CAEC586005C4E15 /* Company.swift in Sources */,
 				84A2A57C2CB5BBBA0058B2CF /* CompanyCell.swift in Sources */,
 				849CBAD72C9EE6C3002992B0 /* SceneDelegate.swift in Sources */,
+				84BB36932CBAF1C40044213A /* EmployeeType.swift in Sources */,
 				84A2A5832CB5CBFA0058B2CF /* CreateEmployeeController.swift in Sources */,
 				84A2A5812CB5C9360058B2CF /* EmployeesController.swift in Sources */,
 				849D50CA2CB5600A002FBBAB /* CoreDataManager.swift in Sources */,
